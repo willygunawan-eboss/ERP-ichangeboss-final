@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Inbox, LayoutGrid, ChevronDown, User, Settings, Building, List, Phone, ArrowLeft, HelpCircle, LogOut, Plus, Sparkles, MessageSquare, Bell } from 'lucide-react';
 
-export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
+export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, onLogout?: () => void }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
@@ -117,10 +117,10 @@ export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
                 
                 <div className="h-px bg-slate-100 my-2 mx-3"></div>
                 
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-bold text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-xl transition-colors">
+                <button onClick={(e) => { e.preventDefault(); if (onLogout) onLogout(); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-bold text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-xl transition-colors">
                   <LogOut className="w-4 h-4" />
                   <span>Sign Out</span>
-                </a>
+                </button>
               </div>
             </div>
           )}

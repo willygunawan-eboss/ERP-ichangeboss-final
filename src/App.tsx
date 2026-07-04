@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { DashboardView } from './components/DashboardView';
@@ -17,11 +17,35 @@ import { InvoicingView } from './components/InvoicingView';
 import { BIView } from './components/BIView';
 import { DMSView } from './components/DMSView';
 import { KBView } from './components/KBView';
+import { LoginView } from './components/LoginView';
 import { ModuleId } from './types';
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    return localStorage.getItem('erp_auth') === 'true';
+  });
   const [activeModule, setActiveModule] = useState<ModuleId>('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      localStorage.setItem('erp_auth', 'true');
+    } else {
+      localStorage.removeItem('erp_auth');
+    }
+  }, [isAuthenticated]);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
+  if (!isAuthenticated) {
+    return <LoginView onLogin={handleLogin} />;
+  }
 
   const renderContent = () => {
     switch (activeModule) {
@@ -80,7 +104,7 @@ export default function App() {
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       <Sidebar activeModule={activeModule} onNavigate={(id) => { setActiveModule(id); setIsSidebarOpen(false); }} isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
       <div className="flex-1 md:pl-64 flex flex-col h-screen overflow-hidden transition-all duration-300 w-full relative">
-        <Header onMenuClick={() => setIsSidebarOpen(true)} />
+        <Header onMenuClick={() => setIsSidebarOpen(true)} onLogout={handleLogout} />
         <main className="flex-1 overflow-y-auto custom-scrollbar relative">
           {renderContent()}
         </main>
