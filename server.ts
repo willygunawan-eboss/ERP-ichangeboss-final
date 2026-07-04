@@ -11,7 +11,7 @@ async function seedDatabase() {
   const existingStats = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
   if (existingStats.length === 0) {
     await db.insert(schema.dashboardStats).values({
-      id: 'main', activeEmployees: 124, totalDepartments: 8, openTickets: 12, monthlyRevenue: 154000
+      id: 'main', activeEmployees: 1248, totalDepartments: 8, openTickets: 12, monthlyRevenue: 154000
     });
   }
 
@@ -26,12 +26,23 @@ async function seedDatabase() {
     await db.insert(schema.productionOrders).values(mockProductionOrders);
     await db.insert(schema.projects).values(mockProjects);
   }
+
+    const tasksCount = await db.select().from(schema.tasks);
+    if (tasksCount.length === 0) {
+      await db.insert(schema.tasks).values([
+        { id: 'T-01', title: 'Review Probation - Sarah Jenkins', assignedTo: 'HR Manager', dueDate: new Date().toISOString().split('T')[0], status: 'Pending', type: 'HR' },
+        { id: 'T-02', title: 'Approve Expenses - Q3 Sales', assignedTo: 'Finance Dept', dueDate: new Date().toISOString().split('T')[0], status: 'Pending', type: 'Finance' }
+      ]);
+      await db.insert(schema.announcements).values([
+        { id: 'A-01', title: 'Company Townhall Q3', content: 'Please join us for the Q3 Company Townhall meeting this Friday at 2 PM in the main lobby.', category: 'General', date: new Date().toISOString().split('T')[0] }
+      ]);
+    }
+
 }
 
 async function startServer() {
   const app = express();
-  const isAIStudio = !!process.env.K_SERVICE;
-  const PORT = isAIStudio ? 3000 : (process.env.PORT || 3010);
+  const PORT = process.env.PORT || 3000;
 
   app.use(cors());
   app.use(express.json());
@@ -43,32 +54,15 @@ async function startServer() {
   });
 
   app.get("/api/dashboard/stats", async (req, res) => {
-    const statsResult = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
-    res.json({ success: true, data: statsResult[0] });
+    try {
+      const statsResult = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
+      res.json({ success: true, data: statsResult[0] });
+    } catch (e) {
+      res.status(500).json({ success: false, error: String(e) });
+    }
   });
 
-  // Generic wrapper for table fetches
-  
-    const createPostRoute = (path: string, table: any) => {
-    app.post(path, async (req, res) => {
-      try {
-        await db.insert(table).values({ id: req.body.id || 'ID-' + Date.now(), ...req.body });
-        // Update dashboard stats
-      const stats = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
-      if (stats.length > 0) {
-        await db.update(schema.dashboardStats)
-          .set({ activeEmployees: stats[0].activeEmployees + 1 })
-          .where(eq(schema.dashboardStats.id, 'main'));
-      }
-      
-      res.json({ success: true });
-      } catch (e) {
-        res.status(500).json({ success: false, error: String(e) });
-      }
-    });
-  };
-
-const createGetRoute = (path: string, table: any) => {
+  const createGetRoute = (path: string, table: any) => {
     app.get(path, async (req, res) => {
       try {
         const result = await db.select().from(table);
@@ -79,8 +73,28 @@ const createGetRoute = (path: string, table: any) => {
     });
   };
 
-  
+  const createPostRoute = (path: string, table: any) => {
+    app.post(path, async (req, res) => {
+      try {
+        await db.insert(table).values({ id: req.body.id || 'ID-' + Date.now(), ...req.body });
+        res.json({ success: true });
+      } catch (e) {
+        res.status(500).json({ success: false, error: String(e) });
+      }
+    });
+  };
+
+  // Generic Get Routes
   createGetRoute("/api/employees", schema.employees);
+  createGetRoute("/api/attendance", schema.attendance);
+  createGetRoute("/api/payroll", schema.payroll);
+  createGetRoute("/api/transactions", schema.transactions);
+  createGetRoute("/api/sales-orders", schema.salesOrders);
+  createGetRoute("/api/products", schema.products);
+  createGetRoute("/api/production-orders", schema.productionOrders);
+  createGetRoute("/api/projects", schema.projects);
+
+  // Custom Employee POST Route
   app.post("/api/employees", async (req, res) => {
     try {
       const employeeId = req.body.id || 'EMP-' + Date.now();
@@ -115,33 +129,76 @@ const createGetRoute = (path: string, table: any) => {
         status: 'Processing'
       });
       
+      // Update dashboard stats
+      const stats = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
+      if (stats.length > 0) {
+        await db.update(schema.dashboardStats)
+          .set({ activeEmployees: stats[0].activeEmployees + 1 })
+          .where(eq(schema.dashboardStats.id, 'main'));
+      }
+
       res.json({ success: true });
     } catch (e) {
       res.status(500).json({ success: false, error: String(e) });
     }
   });
-    
-  createGetRoute("/api/attendance", schema.attendance);
+
+  // Generic Post Routes (except employees which is custom)
   createPostRoute("/api/attendance", schema.attendance);
-    
-  createGetRoute("/api/payroll", schema.payroll);
   createPostRoute("/api/payroll", schema.payroll);
-    
-  createGetRoute("/api/transactions", schema.transactions);
   createPostRoute("/api/transactions", schema.transactions);
-    
-  createGetRoute("/api/sales-orders", schema.salesOrders);
-  createPostRoute("/api/sales-orders", schema.salesOrders);
-    
-  createGetRoute("/api/products", schema.products);
-  createPostRoute("/api/products", schema.products);
-    
-  createGetRoute("/api/production-orders", schema.productionOrders);
-  createPostRoute("/api/production-orders", schema.productionOrders);
-    
-  createGetRoute("/api/projects", schema.projects);
-  createPostRoute("/api/projects", schema.projects);
   
+  // Custom Sales Order POST Route
+  app.post("/api/sales-orders", async (req, res) => {
+    try {
+      await db.insert(schema.salesOrders).values({ id: req.body.id || 'SO-' + Date.now(), ...req.body });
+      
+      // Update dashboard stats revenue
+      const stats = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
+      if (stats.length > 0 && req.body.amount) {
+        await db.update(schema.dashboardStats)
+          .set({ monthlyRevenue: stats[0].monthlyRevenue + Number(req.body.amount) })
+          .where(eq(schema.dashboardStats.id, 'main'));
+      }
+      res.json({ success: true });
+    } catch (e) {
+      res.status(500).json({ success: false, error: String(e) });
+    }
+  });
+
+  createPostRoute("/api/products", schema.products);
+  createPostRoute("/api/production-orders", schema.productionOrders);
+  createGetRoute("/api/tasks", schema.tasks);
+  createPostRoute("/api/tasks", schema.tasks);
+  createGetRoute("/api/announcements", schema.announcements);
+  createPostRoute("/api/announcements", schema.announcements);
+  
+  app.post("/api/tasks/:id/approve", async (req, res) => {
+    try {
+      await db.update(schema.tasks).set({ status: 'Approved' }).where(eq(schema.tasks.id, req.params.id));
+      res.json({ success: true });
+    } catch (e) {
+      res.status(500).json({ success: false, error: String(e) });
+    }
+  });
+  
+  // Custom Project POST Route
+  app.post("/api/projects", async (req, res) => {
+    try {
+      await db.insert(schema.projects).values({ id: req.body.id || 'PRJ-' + Date.now(), ...req.body });
+      // Update dashboard open tickets/projects
+      const stats = await db.select().from(schema.dashboardStats).where(eq(schema.dashboardStats.id, 'main'));
+      if (stats.length > 0) {
+        await db.update(schema.dashboardStats)
+          .set({ openTickets: stats[0].openTickets + 1 })
+          .where(eq(schema.dashboardStats.id, 'main'));
+      }
+      res.json({ success: true });
+    } catch (e) {
+      res.status(500).json({ success: false, error: String(e) });
+    }
+  });
+
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({ server: { middlewareMode: true }, appType: "spa" });
     app.use(vite.middlewares);
@@ -158,9 +215,7 @@ const createGetRoute = (path: string, table: any) => {
 }
 
 startServer().catch((err) => {
-  
   console.error("Error starting server:", err);
   require('fs').writeFileSync('crash.log', String(err.stack || err));
-
   process.exit(1);
 });

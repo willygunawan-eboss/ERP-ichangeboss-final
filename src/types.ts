@@ -90,3 +90,20 @@ export interface StatCard {
   change: string;
   trend: 'up' | 'down' | 'neutral';
 }
+
+export interface Task {
+  id: string;
+  title: string;
+  assignedTo: string;
+  dueDate: string;
+  status: 'Pending' | 'Approved' | 'Completed';
+  type: string;
+}
+
+export interface Announcement {
+  id: string;
+  title: string;
+  content: string;
+  category: string;
+  date: string;
+}

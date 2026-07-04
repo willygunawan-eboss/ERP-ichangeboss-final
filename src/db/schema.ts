@@ -100,3 +100,20 @@ export const projects = sqliteTable('projects', {
   status: text('status').notNull(), // Active, Completed, Delayed
   progress: integer('progress').notNull(),
 });
+
+export const tasks = sqliteTable('tasks', {
+  id: text('id').primaryKey(),
+  title: text('title').notNull(),
+  assignedTo: text('assigned_to').notNull(),
+  dueDate: text('due_date').notNull(),
+  status: text('status').notNull(), // Pending, Approved, Completed
+  type: text('type').notNull(),
+});
+
+export const announcements = sqliteTable('announcements', {
+  id: text('id').primaryKey(),
+  title: text('title').notNull(),
+  content: text('content').notNull(),
+  category: text('category').notNull(),
+  date: text('date').notNull(),
+});

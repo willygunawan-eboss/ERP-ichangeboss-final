@@ -34,6 +34,23 @@ export function useProducts() { return useApiData<Product>('products'); }
 export function useProductionOrders() { return useApiData<ProductionOrder>('production-orders'); }
 export function useProjects() { return useApiData<Project>('projects'); }
 
+import { Task, Announcement } from './types';
+export function useTasks() { return useApiData<Task>('tasks'); }
+export function useAnnouncements() { return useApiData<Announcement>('announcements'); }
+export function useDashboardStats() {
+  const [stats, setStats] = useState({ activeEmployees: 0, totalDepartments: 0, openTickets: 0, monthlyRevenue: 0 });
+  const fetcher = useCallback(() => {
+    fetch('/api/dashboard/stats').then(res => res.json()).then(json => { if (json.success) setStats(json.data); }).catch(e => console.error(e));
+  }, []);
+  useEffect(() => { fetcher(); }, [fetcher]);
+  useEffect(() => {
+    const handleRefetch = () => fetcher();
+    window.addEventListener('refetch-dashboard-stats', handleRefetch);
+    return () => window.removeEventListener('refetch-dashboard-stats', handleRefetch);
+  }, [fetcher]);
+  return { stats, refetch: fetcher };
+}
+
 export const dashboardRevenue = [
   { name: 'Jan', revenue: 450, profit: 120 },
   { name: 'Feb', revenue: 520, profit: 140 },

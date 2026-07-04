@@ -108,7 +108,7 @@ export function HRView() {
                     });
                     if (res.ok) {
                       setIsAddEmployeeModalOpen(false);
-                      alert('Employee added successfully!'); window.dispatchEvent(new Event('refetch-employees')); window.dispatchEvent(new Event('refetch-attendance')); window.dispatchEvent(new Event('refetch-payroll'));
+                      alert('Employee added successfully!'); window.dispatchEvent(new Event('refetch-employees')); window.dispatchEvent(new Event('refetch-attendance')); window.dispatchEvent(new Event('refetch-payroll')); window.dispatchEvent(new Event('refetch-dashboard-stats'));
                     } else {
                       
                       const data = await res.json();
