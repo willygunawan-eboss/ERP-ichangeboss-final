@@ -152,7 +152,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
         </div>
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-5 flex flex-col">
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Monthly Rev</span>
-          <span className="text-2xl font-black text-blue-600">${stats.monthlyRevenue.toLocaleString()}</span>
+          <span className="text-2xl font-black text-blue-600">Rp {stats.monthlyRevenue.toLocaleString("id-ID")}</span>
         </div>
       </div>
 

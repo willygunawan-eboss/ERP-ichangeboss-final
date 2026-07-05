@@ -43,7 +43,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
              <Activity className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h2 className="text-center text-3xl font-bold text-slate-900 tracking-tight font-display">
+        <h2 className="text-center text-3xl font-bold text-slate-900 tracking-tight font-cinzel">
           ICHANGEBOSS ERP
         </h2>
         <p className="mt-2 text-center text-sm text-slate-600">

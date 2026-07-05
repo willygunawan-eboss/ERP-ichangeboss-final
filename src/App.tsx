@@ -26,6 +26,7 @@ export default function App() {
   });
   const [activeModule, setActiveModule] = useState<ModuleId>('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -41,6 +42,11 @@ export default function App() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+  };
+  
+  const handleLogoClick = () => {
+    setActiveModule('dashboard');
+    setRefreshKey(prev => prev + 1);
   };
 
   if (!isAuthenticated) {
@@ -104,8 +110,8 @@ export default function App() {
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       <Sidebar activeModule={activeModule} onNavigate={(id) => { setActiveModule(id); setIsSidebarOpen(false); }} isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
       <div className="flex-1 md:pl-64 flex flex-col h-screen overflow-hidden transition-all duration-300 w-full relative">
-        <Header onMenuClick={() => setIsSidebarOpen(true)} onLogout={handleLogout} />
-        <main className="flex-1 overflow-y-auto custom-scrollbar relative">
+        <Header onMenuClick={() => setIsSidebarOpen(true)} onLogout={handleLogout} onLogoClick={handleLogoClick} />
+        <main key={refreshKey} className="flex-1 overflow-y-auto custom-scrollbar relative">
           {renderContent()}
         </main>
       </div>

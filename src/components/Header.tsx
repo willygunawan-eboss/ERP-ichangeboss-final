@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, Inbox, LayoutGrid, ChevronDown, User, Settings, Building, List, Phone, ArrowLeft, HelpCircle, LogOut, Plus, Sparkles, MessageSquare, Bell } from 'lucide-react';
+import { SettingsModal, SettingsTab } from './SettingsModal';
+import { MessagesModal } from './MessagesModal';
 
-export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, onLogout?: () => void }) {
+export function Header({ onMenuClick, onLogout, onLogoClick }: { onMenuClick?: () => void, onLogout?: () => void, onLogoClick?: () => void }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMessagesOpen, setIsMessagesOpen] = useState(false);
+  const [activeSettingsTab, setActiveSettingsTab] = useState<SettingsTab>(null);
+  
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
+    <>
     <header className="h-[72px] bg-white border-b border-slate-200/80 flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30 shrink-0 shadow-sm backdrop-blur-md bg-white/95">
+
       <div className="flex items-center gap-2 sm:gap-8">
         <button onClick={onMenuClick} className="p-2 -ml-2 text-slate-500 hover:bg-slate-100 rounded-xl md:hidden">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
         {/* Company Logo */}
-        <div className="flex items-center gap-2.5 cursor-pointer group">
+        <div className="flex items-center gap-2.5 cursor-pointer group" onClick={onLogoClick}>
           <div className="w-9 h-9 bg-gradient-to-br from-[#142338] to-slate-800 rounded-xl flex items-center justify-center text-white shadow-md border border-slate-700/50 group-hover:shadow-lg transition-all duration-300 relative overflow-hidden">
              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
              <span className="font-black text-sm tracking-wider relative z-10">IB</span>
@@ -47,7 +67,7 @@ export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, on
         </button>
 
         {/* Inbox */}
-        <button className="flex p-2 sm:p-2.5 text-slate-500 hover:bg-slate-100 hover:text-slate-800 rounded-xl transition-all duration-200 hover:shadow-sm relative">
+        <button onClick={() => setIsMessagesOpen(true)} className="flex p-2 sm:p-2.5 text-slate-500 hover:bg-slate-100 hover:text-slate-800 rounded-xl transition-all duration-200 hover:shadow-sm relative">
           <Inbox className="w-5 h-5" />
           <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white"></span>
         </button>
@@ -58,7 +78,7 @@ export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, on
         </button>
 
         {/* Profile Picture Icon */}
-        <div className="relative ml-2">
+        <div className="relative ml-2" ref={profileRef}>
           <button 
             onClick={() => setIsProfileOpen(!isProfileOpen)}
             className="flex items-center gap-2.5 p-1.5 pl-2 pr-3.5 bg-slate-50/80 hover:bg-slate-100 rounded-full transition-all duration-200 border border-slate-200/80 hover:border-slate-300 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
@@ -79,41 +99,41 @@ export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, on
               </div>
               
               <div className="px-2">
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                <button onClick={() => { setActiveSettingsTab('My Info'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <User className="w-4 h-4 text-slate-400" />
                   <span>My Info</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Account settings'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <Settings className="w-4 h-4 text-slate-400" />
                   <span>Account settings</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Company info'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <Building className="w-4 h-4 text-slate-400" />
                   <span>Company info</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Company list'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <List className="w-4 h-4 text-slate-400" />
                   <span>Company list</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Request PIC contact'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <Phone className="w-4 h-4 text-slate-400" />
                   <span>Request PIC contact</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Switch to old navigation'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <ArrowLeft className="w-4 h-4 text-slate-400" />
                   <span>Switch to old navigation</span>
-                </a>
+                </button>
                 
                 <div className="h-px bg-slate-100 my-2 mx-3"></div>
                 
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                <button onClick={() => { setActiveSettingsTab('Support center'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <MessageSquare className="w-4 h-4 text-slate-400" />
                   <span>Support center</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
+                </button>
+                <button onClick={() => { setActiveSettingsTab('Help'); setIsProfileOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors">
                   <HelpCircle className="w-4 h-4 text-slate-400" />
                   <span>Help</span>
-                </a>
+                </button>
                 
                 <div className="h-px bg-slate-100 my-2 mx-3"></div>
                 
@@ -127,5 +147,15 @@ export function Header({ onMenuClick, onLogout }: { onMenuClick?: () => void, on
         </div>
       </div>
     </header>
+    <SettingsModal 
+        isOpen={activeSettingsTab !== null} 
+        onClose={() => setActiveSettingsTab(null)} 
+        activeTab={activeSettingsTab} 
+    />
+    <MessagesModal 
+        isOpen={isMessagesOpen} 
+        onClose={() => setIsMessagesOpen(false)} 
+    />
+    </>
   );
 }

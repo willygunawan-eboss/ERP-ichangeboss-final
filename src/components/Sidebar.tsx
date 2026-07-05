@@ -22,7 +22,7 @@ const navItems: { id: ModuleId; label: string; icon: React.ElementType; hasSubme
   { id: 'helpdesk', label: 'Helpdesk & Tiket', icon: HeadphonesIcon, hasSubmenu: true },
   { id: 'finance', label: 'Keuangan & Akuntansi', icon: Calculator, hasSubmenu: true },
   { id: 'invoicing', label: 'Faktur (Invoicing)', icon: FileText, hasSubmenu: true },
-  { id: 'hr', label: 'SDM & Payroll', icon: Users, hasSubmenu: true },
+  { id: 'hr', label: 'HR & Payroll', icon: Users, hasSubmenu: true },
   { id: 'bi', label: 'Business Intelligence', icon: BarChart3, hasSubmenu: true },
   { id: 'dms', label: 'Document Management', icon: FileArchive, hasSubmenu: true },
   { id: 'kb', label: 'Knowledge Base', icon: BookOpen, hasSubmenu: true },
