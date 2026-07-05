@@ -19,10 +19,10 @@ export function LoginView({ onLogin }: LoginViewProps) {
 
     // Simulate network delay
     setTimeout(() => {
-      if (username === 'admin' && password === 'admin') {
+      if (username === 'admin' && password === '1234erP') {
         onLogin();
       } else {
-        setError('Invalid username or password. Use admin/admin.');
+        setError('Invalid username or password.');
         setIsLoading(false);
       }
     }, 800);
