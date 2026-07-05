@@ -10,7 +10,7 @@ export function SettingsView() {
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">System Settings</h1>
             <p className="text-slate-500 mt-1 text-sm">Configure system preferences, company details, and integrations.</p>
           </div>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-indigo-600/20 flex items-center gap-2">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-600/20 flex items-center gap-2">
             <Save className="w-4 h-4" />
             Save Changes
           </button>
@@ -21,8 +21,8 @@ export function SettingsView() {
         <div className="flex flex-col md:flex-row gap-8 max-w-6xl">
           {/* Settings Navigation */}
           <div className="w-full md:w-64 space-y-1">
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium text-sm transition-colors">
-              <Building2 className="w-5 h-5 text-indigo-600" />
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium text-sm transition-colors">
+              <Building2 className="w-5 h-5 text-blue-600" />
               Company Details
             </button>
             <button className="w-full flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 rounded-lg font-medium text-sm transition-colors">
@@ -58,7 +58,7 @@ export function SettingsView() {
                     <input 
                       type="text" 
                       defaultValue="PT ICHANGEBOSS Gemilang"
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900 font-medium"
+                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-medium"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -66,7 +66,7 @@ export function SettingsView() {
                     <input 
                       type="text" 
                       defaultValue="01.234.567.8-091.000"
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900 font-mono"
+                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-mono"
                     />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export function SettingsView() {
                   <textarea 
                     rows={3}
                     defaultValue="Jl. Sudirman Kav 10-11, \nJakarta Pusat, 10220, \nIndonesia"
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
                   ></textarea>
                 </div>
 
@@ -86,7 +86,7 @@ export function SettingsView() {
                     <input 
                       type="email" 
                       defaultValue="contact@ichangeboss.co.id"
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900"
+                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -94,7 +94,7 @@ export function SettingsView() {
                     <input 
                       type="tel" 
                       defaultValue="+62 21 555 1234"
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900"
+                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
                     />
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export function SettingsView() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
                   <label className="text-sm font-semibold text-slate-700">Default Currency</label>
-                  <select className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900 font-medium">
+                  <select className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-medium">
                     <option value="IDR">IDR - Indonesian Rupiah</option>
                     <option value="USD">USD - US Dollar</option>
                     <option value="SGD">SGD - Singapore Dollar</option>
@@ -114,7 +114,7 @@ export function SettingsView() {
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-sm font-semibold text-slate-700">Timezone</label>
-                  <select className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-900 font-medium">
+                  <select className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-medium">
                     <option value="Asia/Jakarta">Asia/Jakarta (WIB)</option>
                     <option value="Asia/Makassar">Asia/Makassar (WITA)</option>
                     <option value="Asia/Jayapura">Asia/Jayapura (WIT)</option>

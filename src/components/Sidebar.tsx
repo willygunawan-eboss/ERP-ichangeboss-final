@@ -49,14 +49,22 @@ export function Sidebar({ activeModule, onNavigate, isOpen = false, setIsOpen }:
          <div className="w-96 h-96 bg-blue-400 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="h-16 flex items-center px-6 relative z-10 pt-4 mb-4">
+      <div className="h-20 flex items-center px-6 relative z-10 pt-4 mb-2">
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center relative overflow-hidden shrink-0">
-             <div className="absolute bottom-0 right-0 w-4 h-4 bg-white/20 rounded-tl-full"></div>
-             <span className="text-white font-bold text-xs">I</span>
-          </div>
-          <div>
-            <h1 className="text-white font-bold tracking-widest text-base truncate">ICHANGEBOSS</h1>
+          <img src="/logo.png" alt="ichangeboss" className="h-10 object-contain" onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            const fallback = document.getElementById('fallback-sidebar-logo');
+            if (fallback) fallback.style.display = 'flex';
+          }} />
+          <div id="fallback-sidebar-logo" style={{display: 'none'}} className="items-center gap-2">
+             <div className="flex items-center justify-center text-sky-400">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                 <path fillRule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clipRule="evenodd" />
+               </svg>
+             </div>
+             <div>
+               <h1 className="font-bold tracking-tight text-xl truncate"><span className="text-[#A3C293]">i</span><span className="text-white">changeboss</span></h1>
+             </div>
           </div>
         </div>
       </div>

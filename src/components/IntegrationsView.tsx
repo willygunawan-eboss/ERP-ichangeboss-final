@@ -10,7 +10,7 @@ export function IntegrationsView() {
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Integrations</h1>
             <p className="text-slate-500 mt-1 text-sm">Manage third-party software integrations.</p>
           </div>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Create New
           </button>
@@ -21,7 +21,7 @@ export function IntegrationsView() {
           {[1, 2, 3].map((i) => (
             <div key={i} className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-slate-300 transition-colors">
               <div className="flex justify-between items-start mb-4 relative z-10">
-                <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600">
+                <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600">
                   <Link className="w-5 h-5" />
                 </div>
               </div>
@@ -42,7 +42,7 @@ export function IntegrationsView() {
                 <input 
                   type="text" 
                   placeholder="Search..." 
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                 />
               </div>
               <button className="flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors w-full sm:w-auto">

@@ -47,7 +47,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
         return (
           <div className="space-y-6">
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-20 h-20 bg-gradient-to-tr from-indigo-600 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-inner border-4 border-white shadow-lg">
+              <div className="w-20 h-20 bg-gradient-to-tr from-blue-600 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-inner border-4 border-white shadow-lg">
                 AZ
               </div>
               <div>
@@ -63,7 +63,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.myInfo.name}
                   onChange={(e) => setFormData({...formData, myInfo: {...formData.myInfo, name: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
               <div>
@@ -73,7 +73,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.myInfo.email}
                   onChange={(e) => setFormData({...formData, myInfo: {...formData.myInfo, email: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
               <div>
@@ -83,7 +83,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.myInfo.role}
                   onChange={(e) => setFormData({...formData, myInfo: {...formData.myInfo, role: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
               <div>
@@ -93,7 +93,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.myInfo.phone}
                   onChange={(e) => setFormData({...formData, myInfo: {...formData.myInfo, phone: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
             </div>
@@ -109,7 +109,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.accountSettings.language}
                   onChange={(e) => setFormData({...formData, accountSettings: {...formData.accountSettings, language: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all appearance-none", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all appearance-none", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 >
                   <option>English</option>
                   <option>Indonesian</option>
@@ -121,7 +121,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.accountSettings.timezone}
                   onChange={(e) => setFormData({...formData, accountSettings: {...formData.accountSettings, timezone: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all appearance-none", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all appearance-none", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 >
                   <option>Asia/Jakarta</option>
                   <option>UTC</option>
@@ -141,7 +141,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.companyInfo.name}
                   onChange={(e) => setFormData({...formData, companyInfo: {...formData.companyInfo, name: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
               <div className="col-span-2">
@@ -150,7 +150,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.companyInfo.address}
                   onChange={(e) => setFormData({...formData, companyInfo: {...formData.companyInfo, address: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                   rows={3}
                 />
               </div>
@@ -161,7 +161,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.companyInfo.registrationNumber}
                   onChange={(e) => setFormData({...formData, companyInfo: {...formData.companyInfo, registrationNumber: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
                <div>
@@ -171,7 +171,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   disabled={!isEditing} 
                   value={formData.companyInfo.taxId}
                   onChange={(e) => setFormData({...formData, companyInfo: {...formData.companyInfo, taxId: e.target.value}})}
-                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
+                  className={cn("w-full px-4 py-2.5 rounded-xl text-sm transition-all", isEditing ? "border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500" : "bg-slate-50 border border-slate-200 text-slate-700 font-medium")}
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
         return (
           <div className="flex flex-col items-center justify-center py-16 text-slate-500 bg-slate-50 rounded-2xl border border-slate-100 border-dashed">
             <div className="w-20 h-20 bg-white shadow-sm rounded-full flex items-center justify-center mb-6">
-              <Eye className="w-10 h-10 text-indigo-400" />
+              <Eye className="w-10 h-10 text-blue-400" />
             </div>
             <h3 className="text-xl font-bold text-slate-800 font-display mb-2">Preview Layout</h3>
             <p className="text-sm text-slate-500 max-w-sm text-center">
@@ -200,7 +200,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
         
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 bg-white relative">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
           <div>
             <h3 className="text-2xl font-bold text-slate-900 font-display">{activeTab}</h3>
             <p className="text-sm text-slate-500 mt-1">
@@ -214,7 +214,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                 className={cn(
                   "flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-sm",
                   isEditing 
-                    ? "bg-indigo-600 hover:bg-indigo-700 text-white hover:shadow-indigo-200 hover:shadow-md"
+                    ? "bg-blue-600 hover:bg-blue-700 text-white hover:shadow-blue-200 hover:shadow-md"
                     : "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-300"
                 )}
               >
@@ -225,7 +225,7 @@ export function SettingsModal({ isOpen, onClose, activeTab }: SettingsModalProps
                   </>
                 ) : (
                   <>
-                    <Edit2 className="w-4 h-4 text-indigo-600" />
+                    <Edit2 className="w-4 h-4 text-blue-600" />
                     Edit Form
                   </>
                 )}

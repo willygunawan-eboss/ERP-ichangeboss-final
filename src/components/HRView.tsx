@@ -26,7 +26,7 @@ export function HRView() {
           </div>
           <button 
             onClick={() => setIsAddEmployeeModalOpen(true)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-indigo-600/20 flex items-center gap-2"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-600/20 flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             Add Employee
@@ -41,13 +41,13 @@ export function HRView() {
               className={cn(
                 "pb-3 text-sm font-medium transition-colors whitespace-nowrap relative",
                 activeTab === tab.id 
-                  ? "text-indigo-600 font-semibold" 
+                  ? "text-blue-600 font-semibold" 
                   : "text-slate-500 hover:text-slate-700"
               )}
             >
               {tab.label}
               {activeTab === tab.id && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-t-full"></div>
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-t-full"></div>
               )}
             </button>
           ))}
@@ -123,22 +123,22 @@ export function HRView() {
               >
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Full Name</label>
-                  <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" placeholder="e.g. Budi Santoso" name="name" />
+                  <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" placeholder="e.g. Budi Santoso" name="name" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Employee ID</label>
-                    <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" placeholder="e.g. EMP-100" name="id" />
+                    <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" placeholder="e.g. EMP-100" name="id" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Email Address</label>
-                    <input required type="email" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" placeholder="e.g. budi@company.com" name="email" />
+                    <input required type="email" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" placeholder="e.g. budi@company.com" name="email" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Department</label>
-                    <select name="department" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all">
+                    <select name="department" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
                       <option>IT & Engineering</option>
                       <option>Finance</option>
                       <option>Human Resources</option>
@@ -148,17 +148,17 @@ export function HRView() {
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Role</label>
-                    <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" placeholder="e.g. Software Engineer" name="role" />
+                    <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" placeholder="e.g. Software Engineer" name="role" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Join Date</label>
-                    <input required type="date" name="joinDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" />
+                    <input required type="date" name="joinDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Photo URL (Optional)</label>
-                    <input type="url" name="avatar" placeholder="https://..." className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all" />
+                    <input type="url" name="avatar" placeholder="https://..." className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" />
                   </div>
                 </div>
                 <div className="pt-4 flex justify-end gap-3 border-t border-slate-100 mt-6">
@@ -171,7 +171,7 @@ export function HRView() {
                   </button>
                   <button 
                     type="submit" 
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-600/20"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm shadow-blue-600/20"
                   >
                     Save Employee
                   </button>
@@ -192,7 +192,7 @@ function AttendanceTab() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex items-center gap-4">
-          <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg"><Users className="w-5 h-5" /></div>
+          <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg"><Users className="w-5 h-5" /></div>
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Workforce</p>
             <p className="text-2xl font-bold text-slate-900 leading-none mt-1">{employees.length > 0 ? employees.length : 1248}</p>
@@ -221,7 +221,7 @@ function AttendanceTab() {
             <input 
               type="text" 
               placeholder="Search employee..." 
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
             />
           </div>
           <div className="flex gap-2 w-full sm:w-auto">
@@ -292,12 +292,12 @@ function PayrollTab() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center bg-indigo-50 border border-indigo-100 p-5 rounded-xl">
+      <div className="flex justify-between items-center bg-blue-50 border border-blue-100 p-5 rounded-xl">
         <div>
-          <h3 className="text-indigo-900 font-bold">June 2026 Payroll Cycle</h3>
-          <p className="text-indigo-700 text-sm mt-1">Processing payroll for {employees.length > 0 ? employees.length : 1248} active employees.</p>
+          <h3 className="text-blue-900 font-bold">June 2026 Payroll Cycle</h3>
+          <p className="text-blue-700 text-sm mt-1">Processing payroll for {employees.length > 0 ? employees.length : 1248} active employees.</p>
         </div>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
           Run Payroll
         </button>
       </div>
@@ -339,7 +339,7 @@ function PayrollTab() {
                     <span className={cn(
                       "px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-md",
                       record.status === 'Paid' && "bg-emerald-50 text-emerald-700",
-                      record.status === 'Processing' && "bg-indigo-50 text-indigo-700",
+                      record.status === 'Processing' && "bg-blue-50 text-blue-700",
                       record.status === 'Pending' && "bg-amber-50 text-amber-700",
                     )}>
                       {record.status}
@@ -367,7 +367,7 @@ function OverviewTab() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group">
           <div className="flex justify-between items-start mb-4 relative z-10">
-            <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600"><Users className="w-5 h-5" /></div>
+            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600"><Users className="w-5 h-5" /></div>
           </div>
           <div className="relative z-10">
             <h3 className="text-slate-500 text-sm font-medium mb-1">Total Employees</h3>
@@ -425,7 +425,7 @@ function OverviewTab() {
           </div>
         </div>
         <div className="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mb-4">
+          <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4">
             <Users className="w-8 h-8" />
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-2">Company Culture</h3>
@@ -442,7 +442,7 @@ function EmployeeDirectoryTab() {
   return (
     <div className="space-y-6">
       <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex items-center gap-4">
-        <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg"><Users className="w-5 h-5" /></div>
+        <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg"><Users className="w-5 h-5" /></div>
         <div>
           <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Employees</p>
           <p className="text-2xl font-bold text-slate-900 leading-none mt-1">{employees.length}</p>
@@ -477,7 +477,7 @@ function EmployeeDirectoryTab() {
                       {record.avatar ? (
                          <img src={record.avatar} alt={record.name} className="w-10 h-10 rounded-full border border-slate-200 object-cover" />
                       ) : (
-                         <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold">{record.name.charAt(0)}</div>
+                         <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold">{record.name.charAt(0)}</div>
                       )}
                       <div>
                         <div className="font-semibold text-slate-900">{record.name}</div>

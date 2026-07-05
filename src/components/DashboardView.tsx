@@ -140,7 +140,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-5 flex flex-col">
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Active Employees</span>
-          <span className="text-2xl font-black text-indigo-600">{stats.activeEmployees}</span>
+          <span className="text-2xl font-black text-blue-600">{stats.activeEmployees}</span>
         </div>
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-5 flex flex-col">
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Departments</span>
@@ -167,17 +167,17 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
               <h3 className="text-base font-bold text-slate-800">Shortcut</h3>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-              <button onClick={() => setActiveModal('attendance')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg border border-slate-100 transition-colors group">
-                <Clock className="w-6 h-6 text-slate-400 group-hover:text-indigo-600 mb-2" />
-                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-indigo-700">Live attendance</span>
+              <button onClick={() => setActiveModal('attendance')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg border border-slate-100 transition-colors group">
+                <Clock className="w-6 h-6 text-slate-400 group-hover:text-blue-600 mb-2" />
+                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-blue-700">Live attendance</span>
               </button>
-              <button onClick={() => setActiveModal('benefit')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg border border-slate-100 transition-colors group">
-                <FileText className="w-6 h-6 text-slate-400 group-hover:text-indigo-600 mb-2" />
-                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-indigo-700">Request benefit reimbursement</span>
+              <button onClick={() => setActiveModal('benefit')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg border border-slate-100 transition-colors group">
+                <FileText className="w-6 h-6 text-slate-400 group-hover:text-blue-600 mb-2" />
+                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-blue-700">Request benefit reimbursement</span>
               </button>
-              <button onClick={() => setActiveModal('timeoff')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg border border-slate-100 transition-colors group">
-                <Calendar className="w-6 h-6 text-slate-400 group-hover:text-indigo-600 mb-2" />
-                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-indigo-700">Request time off</span>
+              <button onClick={() => setActiveModal('timeoff')} className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg border border-slate-100 transition-colors group">
+                <Calendar className="w-6 h-6 text-slate-400 group-hover:text-blue-600 mb-2" />
+                <span className="text-xs font-semibold text-center text-slate-700 group-hover:text-blue-700">Request time off</span>
               </button>
               <div className="relative">
                 <button onClick={() => setActiveModal('more')} className="w-full flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-100 transition-colors">
@@ -196,7 +196,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-base font-bold text-slate-800">Employment Insights</h3>
               <select 
-                className="text-sm border border-slate-200 rounded-md px-2 py-1 text-slate-700 focus:outline-none focus:border-indigo-500"
+                className="text-sm border border-slate-200 rounded-md px-2 py-1 text-slate-700 focus:outline-none focus:border-blue-500"
                 value={activeChart}
                 onChange={(e) => setActiveChart(e.target.value)}
               >
@@ -221,7 +221,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
                 { name: 'Performance Review', icon: BarChart3, color: 'text-emerald-500', bg: 'bg-emerald-50', nav: 'hr' },
                 { name: 'Talent management', icon: Users, color: 'text-purple-500', bg: 'bg-purple-50', nav: 'hr' },
                 { name: 'Insight', icon: PieChart, color: 'text-amber-500', bg: 'bg-amber-50', nav: 'bi' },
-                { name: 'Timesheet', icon: Clock, color: 'text-indigo-500', bg: 'bg-indigo-50', nav: 'hr' },
+                { name: 'Timesheet', icon: Clock, color: 'text-blue-500', bg: 'bg-blue-50', nav: 'hr' },
                 { name: 'Document template', icon: FileText, color: 'text-slate-500', bg: 'bg-slate-50', nav: 'dms' },
                 { name: 'Recruitment', icon: Briefcase, color: 'text-rose-500', bg: 'bg-rose-50', nav: 'hr' },
                 { name: 'Talentics', icon: UserPlus, color: 'text-teal-500', bg: 'bg-teal-50', nav: 'hr' },
@@ -243,7 +243,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
           <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-5">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-base font-bold text-slate-800">Task</h3>
-              <a href="#" className="text-sm font-semibold text-indigo-600 hover:underline">View All</a>
+              <a href="#" className="text-sm font-semibold text-blue-600 hover:underline">View All</a>
             </div>
             <div className="space-y-3">
               {tasks.filter(t => t.status === 'Pending').map(task => (
@@ -257,7 +257,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
                       <p className="text-xs text-slate-500">Assigned to: {task.assignedTo} • Due {task.dueDate}</p>
                     </div>
                   </div>
-                  <button onClick={() => approveTask(task.id)} className="px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded hover:bg-indigo-700 transition-colors">Approve</button>
+                  <button onClick={() => approveTask(task.id)} className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded hover:bg-blue-700 transition-colors">Approve</button>
                 </div>
               ))}
               {tasks.filter(t => t.status === 'Pending').length === 0 && (
@@ -275,18 +275,18 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
           {/* 13. Balance Time Off */}
           <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-5">
             <h3 className="text-base font-bold text-slate-800 mb-4">Balance Time Off</h3>
-            <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
-                  <Calendar className="w-5 h-5 text-indigo-600" />
+                  <Calendar className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-800">Annual Leave</h4>
                   <p className="text-xs text-slate-500">Available balance</p>
                 </div>
               </div>
-              <div className="text-2xl font-black text-indigo-600">
-                12 <span className="text-sm font-semibold text-indigo-400">Days</span>
+              <div className="text-2xl font-black text-blue-600">
+                12 <span className="text-sm font-semibold text-blue-400">Days</span>
               </div>
             </div>
           </div>
@@ -304,7 +304,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
               ].map((link, i) => (
                 <button key={i} onClick={() => { if (onNavigate) { if (link.name.includes("Employee") || link.name === "My Info") onNavigate("hr"); else onNavigate("settings"); } }} className="flex items-center justify-between p-2.5 hover:bg-slate-50 rounded-lg transition-colors group">
                   <div className="flex items-center gap-3">
-                    <div className="text-slate-400 group-hover:text-indigo-600">
+                    <div className="text-slate-400 group-hover:text-blue-600">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="text-sm font-medium text-slate-700">{link.name}</span>
@@ -334,7 +334,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
                 <p className="text-xs text-slate-600 line-clamp-2">{ann.content}</p>
               </div>
             ))}
-            <a href="#" className="text-sm font-semibold text-indigo-600 hover:underline block text-center mt-2">View all announcements</a>
+            <a href="#" className="text-sm font-semibold text-blue-600 hover:underline block text-center mt-2">View all announcements</a>
           </div>
 
           {/* 16. Contract & Probation */}
@@ -443,7 +443,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
               <div className="space-y-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Leave Type</label>
-                  <select required className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                  <select required className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
                     <option>Annual Leave</option>
                     <option>Sick Leave</option>
                     <option>Unpaid Leave</option>
@@ -452,21 +452,21 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Start Date</label>
-                    <input required type="date" name="startDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" />
+                    <input required type="date" name="startDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">End Date</label>
-                    <input required type="date" name="endDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" />
+                    <input required type="date" name="endDate" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" />
                   </div>
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Reason</label>
-                  <textarea required rows={3} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"></textarea>
+                  <textarea required rows={3} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"></textarea>
                 </div>
               </div>
               <div className="mt-6 flex gap-3">
                 <button type="button" onClick={() => setActiveModal(null)} className="flex-1 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium hover:bg-slate-200 transition-colors">Cancel</button>
-                <button type="submit" disabled={isSubmitting} className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">Submit Request</button>
+                <button type="submit" disabled={isSubmitting} className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">Submit Request</button>
               </div>
             </form>
           </div>
@@ -494,7 +494,7 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
               <div className="space-y-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Expense Type</label>
-                  <select name="type" required className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                  <select name="type" required className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
                     <option>Medical</option>
                     <option>Travel & Transport</option>
                     <option>Meals</option>
@@ -505,17 +505,17 @@ export function DashboardView({ onNavigate }: { onNavigate?: (id: any) => void }
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Amount</label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 font-medium">Rp</span>
-                    <input name="amount" type="number" required placeholder="0" className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" />
+                    <input name="amount" type="number" required placeholder="0" className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" />
                   </div>
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Receipt / Document</label>
-                  <input type="file" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
+                  <input type="file" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
                 </div>
               </div>
               <div className="mt-6 flex gap-3">
                 <button type="button" onClick={() => setActiveModal(null)} className="flex-1 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium hover:bg-slate-200 transition-colors">Cancel</button>
-                <button type="submit" disabled={isSubmitting} className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">Submit Request</button>
+                <button type="submit" disabled={isSubmitting} className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">Submit Request</button>
               </div>
             </form>
           </div>

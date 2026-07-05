@@ -32,22 +32,33 @@ export function LoginView({ onLogin }: LoginViewProps) {
     <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-40 -left-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-40 left-20 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 -left-40 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 left-20 w-96 h-96 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
-
       <div className="sm:mx-auto sm:w-full sm:max-w-md z-10">
-        <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/30 transform rotate-3 hover:rotate-6 transition-transform duration-300">
-             <Activity className="w-8 h-8 text-white" />
+        <div className="flex justify-center mb-4">
+          {/* Pastikan file logo Anda di-upload ke folder public dengan nama logo.png, atau ubah src di bawah ini */}
+          <img src="/logo.png" alt="ichangeboss" className="h-28 object-contain" onError={(e) => {
+            // Fallback if logo.png is not found
+            e.currentTarget.style.display = 'none';
+            const fallback = document.getElementById('fallback-logo');
+            if (fallback) fallback.style.display = 'block';
+          }} />
+          <div id="fallback-logo" style={{display: 'none'}} className="text-center">
+            <div className="flex items-center justify-center mb-4 text-sky-400">
+               {/* Simplified SVG icon matching the requested logo's vibe */}
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16">
+                 <path fillRule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clipRule="evenodd" />
+               </svg>
+            </div>
+            <h2 className="text-4xl font-bold tracking-tight">
+              <span className="text-[#A3C293]">i</span><span className="text-[#1E5A95]">changeboss</span>
+            </h2>
           </div>
         </div>
-        <h2 className="text-center text-3xl font-bold text-slate-900 tracking-tight font-cinzel">
-          ICHANGEBOSS ERP
-        </h2>
-        <p className="mt-2 text-center text-sm text-slate-600">
-          Superadmin Portal Access
+        <p className="mt-2 text-center text-sm text-slate-500 font-medium tracking-wide uppercase">
+          Enterprise Portal Access
         </p>
       </div>
 
@@ -86,7 +97,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors bg-slate-50 focus:bg-white"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl focus:ring-blue-600 focus:border-blue-600 sm:text-sm transition-colors bg-slate-50 focus:bg-white"
                   placeholder="admin"
                 />
               </div>
@@ -107,7 +118,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors bg-slate-50 focus:bg-white"
+                  className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl focus:ring-blue-600 focus:border-blue-600 sm:text-sm transition-colors bg-slate-50 focus:bg-white"
                   placeholder="••••••••"
                 />
               </div>
@@ -119,7 +130,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-slate-300 rounded cursor-pointer"
+                  className="h-4 w-4 text-blue-800 focus:ring-blue-600 border-slate-300 rounded cursor-pointer"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-700 cursor-pointer">
                   Remember me
@@ -127,7 +138,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                <a href="#" className="font-semibold text-blue-800 hover:text-blue-600">
                   Forgot password?
                 </a>
               </div>
@@ -138,7 +149,7 @@ export function LoginView({ onLogin }: LoginViewProps) {
                 type="submit"
                 disabled={isLoading}
                 className={cn(
-                  "w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all",
+                  "w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 transition-all",
                   isLoading ? "opacity-75 cursor-wait" : ""
                 )}
               >

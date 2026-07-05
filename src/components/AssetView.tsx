@@ -233,7 +233,7 @@ export function AssetView() {
             </button>
             <button 
               onClick={() => setIsFormOpen(true)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm flex items-center gap-2 active:scale-95"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm flex items-center gap-2 active:scale-95"
             >
               <Plus className="w-4 h-4" />
               Create New
@@ -245,9 +245,9 @@ export function AssetView() {
       <div className="flex-1 p-8 pt-4 overflow-y-auto space-y-6 custom-scrollbar">
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-indigo-100 transition-colors">
+          <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-blue-100 transition-colors">
             <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 <Database className="w-5 h-5" />
               </div>
             </div>
@@ -294,7 +294,7 @@ export function AssetView() {
                   placeholder="Search by ID, name, category..." 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm"
+                  className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm"
                 />
               </div>
               
@@ -344,12 +344,12 @@ export function AssetView() {
                 {filteredAssets.length > 0 ? (
                   filteredAssets.map(asset => (
                     <tr key={asset.id} className="hover:bg-slate-50/80 transition-colors group cursor-pointer">
-                      <td className="px-6 py-4 font-bold text-indigo-600">{asset.assetId}</td>
+                      <td className="px-6 py-4 font-bold text-blue-600">{asset.assetId}</td>
                       <td className="px-6 py-4 text-slate-500 font-mono text-xs">{asset.serialNumber || "-"}</td>
                       <td className="px-6 py-4 font-semibold text-slate-700">{asset.name}</td>
                       <td className="px-6 py-4 text-slate-600">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white shadow-sm text-slate-600 text-xs font-medium border border-slate-200">
-                          {asset.category === 'Hardware' ? <Laptop className="w-3.5 h-3.5 text-indigo-500" /> : <Building2 className="w-3.5 h-3.5 text-amber-500" />}
+                          {asset.category === 'Hardware' ? <Laptop className="w-3.5 h-3.5 text-blue-500" /> : <Building2 className="w-3.5 h-3.5 text-amber-500" />}
                           {asset.category}
                         </span>
                       </td>
@@ -378,7 +378,7 @@ export function AssetView() {
                         {currentUser.role === "super_admin" && (
                           <button 
                             onClick={(e) => { e.stopPropagation(); setEditingAsset(asset); setIsEditFormOpen(true); }}
-                            className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-3 py-1 rounded-md text-xs font-semibold transition-colors"
+                            className="text-blue-600 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md text-xs font-semibold transition-colors"
                           >
                             Edit
                           </button>
@@ -426,7 +426,7 @@ export function AssetView() {
                     type="text" 
                     value={formData.assetId}
                     onChange={(e) => setFormData({...formData, assetId: e.target.value})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                     required
                   />
                 </div>
@@ -436,7 +436,7 @@ export function AssetView() {
                     <select 
                       value={formData.category}
                       onChange={(e) => setFormData({...formData, category: e.target.value})}
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
                     >
                       <option value="Hardware">Hardware</option>
                       <option value="Software">Software</option>
@@ -458,7 +458,7 @@ export function AssetView() {
                   value={formData.serialNumber || ""}
                   onChange={(e) => setFormData({...formData, serialNumber: e.target.value})}
                   placeholder="e.g. SN-XYZ-123"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                 />
               </div>
               <div className="space-y-1.5">
@@ -468,7 +468,7 @@ export function AssetView() {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   placeholder="e.g. MacBook Pro M3 Max 32GB"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                   required
                 />
               </div>
@@ -480,7 +480,7 @@ export function AssetView() {
                     type="date" 
                     value={formData.purchaseDate}
                     onChange={(e) => setFormData({...formData, purchaseDate: e.target.value})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                     required
                   />
                 </div>
@@ -497,7 +497,7 @@ export function AssetView() {
                       value={formData.currentValue}
                       onChange={(e) => setFormData({...formData, currentValue: e.target.value})}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                      className="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                       required
                     />
                   </div>
@@ -510,7 +510,7 @@ export function AssetView() {
                   <select 
                     value={formData.status}
                     onChange={(e) => setFormData({...formData, status: e.target.value})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
                   >
                     <option value="Active">Active (In Use)</option>
                     <option value="Maintenance">Under Maintenance</option>
@@ -532,7 +532,7 @@ export function AssetView() {
                 </button>
                 <button 
                   type="submit"
-                  className="px-6 py-2.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+                  className="px-6 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
                 >
                   <Plus className="w-4 h-4" />
                   Save Asset
@@ -566,7 +566,7 @@ export function AssetView() {
                     type="text" 
                     value={editingAsset.assetId}
                     onChange={(e) => setEditingAsset({...editingAsset, assetId: e.target.value})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                     required
                   />
                 </div>
@@ -576,7 +576,7 @@ export function AssetView() {
                     <select 
                       value={editingAsset.category}
                       onChange={(e) => setEditingAsset({...editingAsset, category: e.target.value})}
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
                     >
                       <option value="Hardware">Hardware</option>
                       <option value="Software">Software</option>
@@ -597,7 +597,7 @@ export function AssetView() {
                   type="text" 
                   value={editingAsset.serialNumber || ""}
                   onChange={(e) => setEditingAsset({...editingAsset, serialNumber: e.target.value})}
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                 />
               </div>
 
@@ -607,7 +607,7 @@ export function AssetView() {
                   type="text" 
                   value={editingAsset.name}
                   onChange={(e) => setEditingAsset({...editingAsset, name: e.target.value})}
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                   required
                 />
               </div>
@@ -619,7 +619,7 @@ export function AssetView() {
                     type="date" 
                     value={editingAsset.purchaseDate}
                     onChange={(e) => setEditingAsset({...editingAsset, purchaseDate: e.target.value})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                     required
                   />
                 </div>
@@ -635,7 +635,7 @@ export function AssetView() {
                       step="0.01"
                       value={editingAsset.currentValue}
                       onChange={(e) => setEditingAsset({...editingAsset, currentValue: parseFloat(e.target.value) || 0})}
-                      className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all shadow-sm"
+                      className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all shadow-sm"
                       required
                     />
                   </div>
@@ -648,7 +648,7 @@ export function AssetView() {
                   <select 
                     value={editingAsset.status}
                     onChange={(e) => setEditingAsset({...editingAsset, status: e.target.value as 'Active' | 'Maintenance' | 'Retired'})}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:border-indigo-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 outline-none transition-all appearance-none shadow-sm cursor-pointer"
                   >
                     <option value="Active">Active (In Use)</option>
                     <option value="Maintenance">Under Maintenance</option>
@@ -670,7 +670,7 @@ export function AssetView() {
                 </button>
                 <button 
                   type="submit"
-                  className="px-6 py-2.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
+                  className="px-6 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center gap-2"
                 >
                   <Plus className="w-4 h-4" />
                   Save Changes

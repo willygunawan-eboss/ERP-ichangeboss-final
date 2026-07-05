@@ -17,7 +17,7 @@ export function ProjectsView() {
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Project Management</h1>
             <p className="text-slate-500 mt-1 text-sm">Manage client projects, budgets, and milestones.</p>
           </div>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-indigo-600/20 flex items-center gap-2">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-600/20 flex items-center gap-2">
             <Plus className="w-4 h-4" />
             New Project
           </button>
@@ -28,7 +28,7 @@ export function ProjectsView() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-slate-300 transition-colors">
             <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600">
                 <FolderKanban className="w-5 h-5" />
               </div>
               <div className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-md bg-emerald-50 text-emerald-700">
@@ -84,7 +84,7 @@ export function ProjectsView() {
                 <input 
                   type="text" 
                   placeholder="Search projects..." 
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                 />
               </div>
               <button className="flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors w-full sm:w-auto">
@@ -123,13 +123,13 @@ export function ProjectsView() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
                           <div className="w-full bg-slate-200 rounded-full h-1.5">
-                            <div className="bg-indigo-600 h-1.5 rounded-full" style={{ width: p.progress + '%' }}></div>
+                            <div className="bg-blue-600 h-1.5 rounded-full" style={{ width: p.progress + '%' }}></div>
                           </div>
                           <span className="text-xs text-slate-500 w-8">{p.progress}%</span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={"px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase " + (p.status === 'Completed' ? 'bg-emerald-100 text-emerald-700' : p.status === 'Active' ? 'bg-indigo-100 text-indigo-700' : 'bg-amber-100 text-amber-700')}>
+                        <span className={"px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase " + (p.status === 'Completed' ? 'bg-emerald-100 text-emerald-700' : p.status === 'Active' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700')}>
                           {p.status}
                         </span>
                       </td>

@@ -32,11 +32,21 @@ export function Header({ onMenuClick, onLogout, onLogoClick }: { onMenuClick?: (
         </button>
         {/* Company Logo */}
         <div className="flex items-center gap-2.5 cursor-pointer group" onClick={onLogoClick}>
-          <div className="w-9 h-9 bg-gradient-to-br from-[#142338] to-slate-800 rounded-xl flex items-center justify-center text-white shadow-md border border-slate-700/50 group-hover:shadow-lg transition-all duration-300 relative overflow-hidden">
-             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-             <span className="font-black text-sm tracking-wider relative z-10">IB</span>
+          <img src="/logo.png" alt="ichangeboss" className="h-8 sm:h-10 object-contain hidden sm:block" onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            const fallback = document.getElementById('fallback-header-logo');
+            if (fallback) fallback.style.display = 'flex';
+          }} />
+          <div id="fallback-header-logo" style={{display: 'none'}} className="items-center gap-2">
+            <div className="flex items-center justify-center text-sky-400">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                 <path fillRule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clipRule="evenodd" />
+               </svg>
+            </div>
+            <h2 className="font-bold tracking-tight text-xl hidden sm:block">
+              <span className="text-[#A3C293]">i</span><span className="text-[#1E5A95]">changeboss</span>
+            </h2>
           </div>
-          <span className="font-black text-slate-800 tracking-tight text-lg sm:text-xl group-hover:text-slate-900 transition-colors uppercase hidden sm:block">ichangeboss</span>
         </div>
 
         {/* Core and Non-Core Tabs */}
@@ -48,8 +58,8 @@ export function Header({ onMenuClick, onLogout, onLogoClick }: { onMenuClick?: (
 
       <div className="flex items-center gap-1.5 sm:gap-4">
         {/* Summarize data */}
-        <button className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50/80 text-indigo-600 hover:bg-indigo-100/80 transition-all duration-200 text-sm font-bold border border-indigo-100 hover:border-indigo-200 hover:shadow-sm group">
-          <Sparkles className="w-4 h-4 text-indigo-500 group-hover:text-indigo-600 transition-colors" />
+        <button className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/80 text-blue-600 hover:bg-blue-100/80 transition-all duration-200 text-sm font-bold border border-blue-100 hover:border-blue-200 hover:shadow-sm group">
+          <Sparkles className="w-4 h-4 text-blue-500 group-hover:text-blue-600 transition-colors" />
           <span>Summarize data</span>
         </button>
 
@@ -83,7 +93,7 @@ export function Header({ onMenuClick, onLogout, onLogoClick }: { onMenuClick?: (
             onClick={() => setIsProfileOpen(!isProfileOpen)}
             className="flex items-center gap-2.5 p-1.5 pl-2 pr-3.5 bg-slate-50/80 hover:bg-slate-100 rounded-full transition-all duration-200 border border-slate-200/80 hover:border-slate-300 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
           >
-            <div className="w-8 h-8 bg-gradient-to-tr from-indigo-600 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-inner">
+            <div className="w-8 h-8 bg-gradient-to-tr from-blue-600 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-inner">
               AZ
             </div>
             <span className="text-sm font-bold text-slate-700 hidden sm:block">Achmad Z Rizaldy</span>

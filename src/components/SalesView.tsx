@@ -19,7 +19,7 @@ export function SalesView() {
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Sales & CRM</h1>
             <p className="text-slate-500 mt-1 text-sm">Manage sales orders, customer relationships, and leads.</p>
           </div>
-          <button onClick={() => setIsAddModalOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-indigo-600/20 flex items-center gap-2">
+          <button onClick={() => setIsAddModalOpen(true)} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-600/20 flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Create Sales Order
           </button>
@@ -30,7 +30,7 @@ export function SalesView() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-slate-300 transition-colors">
             <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600">
                 <ShoppingCart className="w-5 h-5" />
               </div>
               <div className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-md bg-emerald-50 text-emerald-700">
@@ -62,7 +62,7 @@ export function SalesView() {
 
           <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm flex flex-col relative overflow-hidden group hover:border-slate-300 transition-colors">
             <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600">
                 <Users className="w-5 h-5" />
               </div>
               <div className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-md bg-emerald-50 text-emerald-700">
@@ -86,7 +86,7 @@ export function SalesView() {
                 <input 
                   type="text" 
                   placeholder="Search orders..." 
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                 />
               </div>
               <button className="flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors w-full sm:w-auto">
@@ -180,16 +180,16 @@ export function SalesView() {
               >
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Customer Name</label>
-                  <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" name="customer" />
+                  <input required type="text" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" name="customer" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Amount (IDR)</label>
-                    <input required type="number" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" name="amount" />
+                    <input required type="number" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" name="amount" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Order Date</label>
-                    <input required type="date" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" name="date" />
+                    <input required type="date" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500" name="date" />
                   </div>
                 </div>
                 <div className="pt-4 flex justify-end gap-3 border-t border-slate-100 mt-6">
@@ -202,7 +202,7 @@ export function SalesView() {
                   </button>
                   <button 
                     type="submit" 
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
                   >
                     Save Sales Order
                   </button>

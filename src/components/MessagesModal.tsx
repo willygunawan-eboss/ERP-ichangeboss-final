@@ -59,7 +59,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
           <div className="p-5 border-b border-slate-200 bg-white">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-bold text-slate-800 font-display">Messages</h3>
-              <button className="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-sm transition-colors" title="New Message">
+              <button className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-sm transition-colors" title="New Message">
                 <Edit className="w-4 h-4" />
               </button>
             </div>
@@ -69,7 +69,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
               <input 
                 type="text" 
                 placeholder="Search messages..." 
-                className="w-full pl-9 pr-4 py-2 bg-slate-100/80 border-none rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all"
+                className="w-full pl-9 pr-4 py-2 bg-slate-100/80 border-none rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
               />
             </div>
           </div>
@@ -78,14 +78,14 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
           <div className="flex p-3 gap-2 bg-white border-b border-slate-100">
             <button 
               onClick={() => { setActiveTab('inbox'); setSelectedMessage(null); }}
-              className={cn("flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-semibold transition-colors", activeTab === 'inbox' ? "bg-indigo-50 text-indigo-700" : "text-slate-600 hover:bg-slate-50")}
+              className={cn("flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-semibold transition-colors", activeTab === 'inbox' ? "bg-blue-50 text-blue-700" : "text-slate-600 hover:bg-slate-50")}
             >
               <InboxIcon className="w-4 h-4" />
               Inbox
             </button>
             <button 
               onClick={() => { setActiveTab('sent'); setSelectedMessage(null); }}
-              className={cn("flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-semibold transition-colors", activeTab === 'sent' ? "bg-indigo-50 text-indigo-700" : "text-slate-600 hover:bg-slate-50")}
+              className={cn("flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-semibold transition-colors", activeTab === 'sent' ? "bg-blue-50 text-blue-700" : "text-slate-600 hover:bg-slate-50")}
             >
               <Send className="w-4 h-4" />
               Sent
@@ -101,9 +101,9 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                 className={cn(
                   "w-full text-left p-3 rounded-xl transition-all duration-200 border group",
                   selectedMessage?.id === msg.id 
-                    ? "bg-white border-indigo-200 shadow-sm ring-1 ring-indigo-500/10" 
+                    ? "bg-white border-blue-200 shadow-sm ring-1 ring-blue-500/10" 
                     : "bg-transparent border-transparent hover:bg-white hover:border-slate-200 hover:shadow-sm",
-                  activeTab === 'inbox' && !msg.read && selectedMessage?.id !== msg.id ? "bg-indigo-50/40" : ""
+                  activeTab === 'inbox' && !msg.read && selectedMessage?.id !== msg.id ? "bg-blue-50/40" : ""
                 )}
               >
                 <div className="flex justify-between items-start mb-1">
@@ -111,7 +111,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                     <span className="font-bold text-slate-800 text-sm truncate max-w-[120px]">
                       {activeTab === 'inbox' ? msg.sender : msg.receiver}
                     </span>
-                    {activeTab === 'inbox' && !msg.read && <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>}
+                    {activeTab === 'inbox' && !msg.read && <span className="w-2 h-2 bg-blue-600 rounded-full"></span>}
                   </div>
                   <span className="text-xs font-medium text-slate-500">{msg.time}</span>
                 </div>
@@ -145,7 +145,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                    <div className="w-12 h-12 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">
                       {activeTab === 'inbox' ? selectedMessage.senderAvatar : selectedMessage.receiverAvatar}
                     </div>
                     <div>
@@ -172,7 +172,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
               {/* Reply Area (if Inbox) */}
               {activeTab === 'inbox' && (
                 <div className="p-6 bg-slate-50 border-t border-slate-100">
-                  <div className="bg-white border border-slate-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500 transition-all shadow-sm">
+                  <div className="bg-white border border-slate-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all shadow-sm">
                     <textarea 
                       placeholder="Write a reply..." 
                       className="w-full p-4 min-h-[100px] border-none resize-none focus:ring-0 text-sm"
@@ -181,7 +181,7 @@ export function MessagesModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                       <button className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
                         <Paperclip className="w-5 h-5" />
                       </button>
-                      <button className="flex items-center gap-2 px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-bold shadow-sm transition-all">
+                      <button className="flex items-center gap-2 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-bold shadow-sm transition-all">
                         <Send className="w-4 h-4" />
                         Send Reply
                       </button>
