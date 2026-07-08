@@ -42,7 +42,9 @@ async function seedDatabase() {
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT || 3000;
+  // Di AI Studio, kita HARUS menggunakan port 3000 (DEFAULT_APP_PORT). 
+  // Di server Ubuntu pengguna, akan menggunakan process.env.PORT (3010) sesuai ecosystem.config.cjs.
+  const PORT = process.env.DEFAULT_APP_PORT ? 3000 : (process.env.PORT || 3010);
 
   app.use(cors());
   app.use(express.json());
