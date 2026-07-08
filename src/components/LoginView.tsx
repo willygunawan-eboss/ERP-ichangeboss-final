@@ -12,20 +12,29 @@ export function LoginView({ onLogin }: LoginViewProps) {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    // Simulate network delay
-    setTimeout(() => {
-      if (username === 'admin' && password === '1234erP') {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      
+      if (data.success) {
         onLogin();
       } else {
-        setError('Invalid username or password.');
+        setError(data.message || 'Invalid username or password.');
         setIsLoading(false);
       }
-    }, 800);
+    } catch (err) {
+      setError('An error occurred during login.');
+      setIsLoading(false);
+    }
   };
 
   return (

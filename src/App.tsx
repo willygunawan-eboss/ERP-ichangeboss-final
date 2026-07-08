@@ -21,33 +21,54 @@ import { LoginView } from './components/LoginView';
 import { ModuleId } from './types';
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return localStorage.getItem('erp_auth') === 'true';
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isInitializing, setIsInitializing] = useState(true);
   const [activeModule, setActiveModule] = useState<ModuleId>('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      localStorage.setItem('erp_auth', 'true');
-    } else {
-      localStorage.removeItem('erp_auth');
-    }
-  }, [isAuthenticated]);
+    const checkAuth = async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setIsAuthenticated(true);
+          } else {
+            setIsAuthenticated(false);
+          }
+        } else {
+          setIsAuthenticated(false);
+        }
+      } catch (err) {
+        setIsAuthenticated(false);
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+    checkAuth();
+  }, []);
 
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {}
     setIsAuthenticated(false);
   };
-  
+
   const handleLogoClick = () => {
     setActiveModule('dashboard');
     setRefreshKey(prev => prev + 1);
   };
+
+  if (isInitializing) {
+    return <div className="flex items-center justify-center h-screen bg-slate-50"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div></div>;
+  }
 
   if (!isAuthenticated) {
     return <LoginView onLogin={handleLogin} />;

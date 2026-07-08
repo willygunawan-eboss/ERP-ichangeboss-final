@@ -3,10 +3,13 @@ import { sql } from 'drizzle-orm';
 
 export const users = sqliteTable('users', {
   id: text('id').primaryKey(),
+  username: text('username').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
   name: text('name').notNull(),
   email: text('email').notNull().unique(),
   role: text('role').notNull(), // 'admin', 'employee', 'manager'
   department: text('department'),
+  refreshToken: text('refresh_token'),
   createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
 });
 

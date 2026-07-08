@@ -2,6 +2,9 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import cors from "cors";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 import { db } from "./src/db/index";
 import * as schema from "./src/db/schema";
 import { eq } from "drizzle-orm";
@@ -38,6 +41,19 @@ async function seedDatabase() {
       ]);
     }
 
+    const usersCount = await db.select().from(schema.users);
+    if (usersCount.length === 0) {
+      const passwordHash = await bcrypt.hash('1234erP', 10);
+      await db.insert(schema.users).values({
+        id: 'U-01',
+        username: 'admin',
+        passwordHash,
+        name: 'Administrator',
+        email: 'admin@ichangeboss.com',
+        role: 'admin',
+        department: 'Management'
+      });
+    }
 }
 
 async function startServer() {
@@ -48,6 +64,120 @@ async function startServer() {
 
   app.use(cors());
   app.use(express.json());
+
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-for-development';
+const REFRESH_SECRET = process.env.REFRESH_SECRET || 'fallback-refresh-secret';
+
+app.use(cookieParser());
+
+const authMiddleware = async (req, res, next) => {
+  if (['/api/auth/login', '/api/auth/refresh', '/api/auth/logout', '/api/health'].includes(req.path)) return next();
+  if (!req.path.startsWith('/api/')) return next();
+
+  const { token, refreshToken } = req.cookies;
+  
+  if (!token && !refreshToken) {
+    return res.status(401).json({ success: false, message: 'Not authenticated' });
+  }
+  
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      req.user = decoded;
+      return next();
+    } catch (e) {
+      // Token invalid or expired, fall through to refresh
+    }
+  }
+  
+  if (refreshToken) {
+    try {
+      const decodedRefresh = jwt.verify(refreshToken, REFRESH_SECRET);
+      const result = await db.select().from(schema.users).where(eq(schema.users.id, decodedRefresh.id));
+      if (result.length > 0 && result[0].refreshToken === refreshToken) {
+        const user = result[0];
+        const newToken = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
+        res.cookie('token', newToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 15 * 60 * 1000 });
+        req.user = { id: user.id, username: user.username, role: user.role };
+        return next();
+      }
+    } catch (e) {
+      // Refresh token invalid
+    }
+  }
+  
+  res.status(401).json({ success: false, message: 'Token invalid' });
+};
+app.use('/api', authMiddleware);
+
+
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const result = await db.select().from(schema.users).where(eq(schema.users.username, username));
+    if (result.length === 0) return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    
+    const user = result[0];
+    const valid = await bcrypt.compare(password, user.passwordHash);
+    if (!valid) return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    
+    const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
+    const refreshToken = jwt.sign({ id: user.id }, REFRESH_SECRET, { expiresIn: '7d' });
+    
+    await db.update(schema.users).set({ refreshToken }).where(eq(schema.users.id, user.id));
+    
+    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 15 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    
+    res.json({ success: true, user: { id: user.id, username: user.username, name: user.name, role: user.role } });
+  } catch (e) {
+    res.status(500).json({ success: false, error: String(e) });
+  }
+});
+
+app.post('/api/auth/refresh', async (req, res) => {
+  try {
+    const { refreshToken } = req.cookies;
+    if (!refreshToken) return res.status(401).json({ success: false, message: 'No refresh token' });
+    
+    const decoded = jwt.verify(refreshToken, REFRESH_SECRET) as any;
+    const result = await db.select().from(schema.users).where(eq(schema.users.id, decoded.id));
+    if (result.length === 0 || result[0].refreshToken !== refreshToken) {
+      return res.status(401).json({ success: false, message: 'Invalid refresh token' });
+    }
+    
+    const user = result[0];
+    const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '15m' });
+    
+    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 15 * 60 * 1000 });
+    res.json({ success: true });
+  } catch (e) {
+    res.status(401).json({ success: false, message: 'Invalid refresh token' });
+  }
+});
+
+app.post('/api/auth/logout', async (req, res) => {
+  try {
+    const { refreshToken } = req.cookies;
+    if (refreshToken) {
+      const decoded = jwt.verify(refreshToken, REFRESH_SECRET) as any;
+      await db.update(schema.users).set({ refreshToken: null }).where(eq(schema.users.id, decoded.id));
+    }
+  } catch(e) {}
+  
+  res.clearCookie('token');
+  res.clearCookie('refreshToken');
+  res.json({ success: true });
+});
+
+app.get('/api/auth/me', (req, res) => {
+  if (req.user) return res.json({ success: true, user: req.user });
+  res.status(401).json({ success: false, message: 'Not authenticated' });
+});
+
+
+
+
 
   await seedDatabase();
 
